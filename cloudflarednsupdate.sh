@@ -21,6 +21,10 @@ if ! which jq >/dev/null 2>&1; then
 fi
 
 DOMAINNAME=$(echo $DOMAINTOUPDATE | sed s/\.[0-9a-zA-Z\-]*\.[a-zA-Z]*$//g)
+if [[ "$DOMAINNAME" == "" ]] ; then
+        DOMAINNAME="$DOMAINTOUPDATE"
+fi
+
 # echo "DOMAINNAME: $DOMAINNAME"
 DOMAINIP=$(ping -c 1 "$DOMAINTOUPDATE" | grep -oP '(\d{1,3}\.){3}\d{1,3}' | head -n 1)
 #echo "DOMAINIP: $DOMAINIP"
