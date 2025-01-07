@@ -16,5 +16,8 @@ CLOUDFLAREEMAIL=
 CLOUDFLAREGLOBALKEY=  
 DOMAINTOUPDATE=  
   
-After this you can create a crontab to update for instance every 5th minute.  
+After this you can create a crontab to update for instance every 5th minute. 
 */5 * * * * /home/username/bin/cloudflare  
+
+or if you have multiple ones on the same server (for instance for www, sftp etc.)
+*/5 * * * * for f in /opt/cloudflare/*; do bash "$f"; done
